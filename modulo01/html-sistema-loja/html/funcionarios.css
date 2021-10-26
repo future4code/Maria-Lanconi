@@ -1,0 +1,82 @@
+/* Config geral*/
+* {
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: rgb(26, 26, 26);
+}
+
+a{ 
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(209, 190, 206);
+    padding: 5px;
+}
+
+ul{
+    list-style: none;
+}
+
+li {
+    font-weight: bold;
+    
+    
+}
+img{
+    height: 40px;
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+/*Config especifica*/
+#header {
+    display: block;
+    height: 180px;
+    background-color: rgb(209, 190, 206);
+    box-shadow: 25px -20px rgba(209, 175, 207, 0.39);
+    text-align: center;
+}
+
+#header-titulo {
+    padding-top: 35px;
+}
+
+#titulo-principal {
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+#header-menu {
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    padding-top: 25px;
+    
+}
+
+#conteudo-principal {
+    margin: 15px 50px;
+}
+
+#titulo-conteudo{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+#footer {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    
+    
+}
+
+#footer-imagem {
+    height: 25px;
+    padding: 0px;
+    padding-left: 20px;
+
+}

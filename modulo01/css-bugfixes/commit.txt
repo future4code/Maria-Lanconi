@@ -1,0 +1,15 @@
+/*
+
+1 - adicionei o <a> para linkar uma pag a outra
+2 - mudei de lugar com o position
+3 - adicionei um padding
+4 - fiz um span para cara frase e dei display:block
+5 - usei text-align: center
+6 - ajustei o height e o width
+7 - adicionei a imagem pelo <img>
+8 - usei o :active e :hover
+9 - retirei a borda de cada canto deixando apenas a de baixo
+10 - adicionei o link da fonte nos doc html e adicionei aos estilos
+11 - adicionei margin:auto
+
+*/
