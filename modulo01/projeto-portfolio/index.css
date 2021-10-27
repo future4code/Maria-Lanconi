@@ -1,0 +1,156 @@
+/*
+Estilo Geral
+*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+}
+
+/*
+Estilo Menu
+*/
+
+#menu-lateral{
+    background-color: #e6d818;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    text-align: center;
+    
+}
+
+#imagem-menu-lateral{
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+#imagem-menu-lateral>img{
+    width: 45%;
+    border-radius: 50%;
+    border: 15px solid #ffff
+    ;
+}
+
+#texto-menu-lateral{
+    background-color: #e6d81978;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    right: 10%;
+    border-radius: 5px;
+    color: #000;
+    padding: 5px;
+}
+
+#rodape-menu-lateral{
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    right: 10%;
+}
+
+.imagem-rede-social{
+    width: 25px;
+}
+
+#menu-inferior{
+    position: relative;
+    bottom: 35px;
+    left: 10%;
+    right: 10%;
+}
+
+.menu-projetos{
+    margin: 2.5px;
+    width: 200px;
+    list-style: none;
+    color: #fff;
+}
+
+.menu-projetos>a{
+    display: block;   
+    width: 200px;
+    padding: 2.5px;
+    background-color: #1a1919;
+    border: 1px solid #131212;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu-projetos>a:active{
+    background-color: #0c0b0b;
+    border: 1px solid #050505;
+    text-decoration: none;
+    color: #e6d818;
+}
+
+/* 
+Estilo conteudo principal
+*/
+
+#conteudo-principal {
+ position: fixed;
+ width: 75%;
+ height: 100%;
+ left: 25%;
+}
+
+.titulo-conteudo {
+    display: block;
+    margin: 2.5%;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #000;
+}
+
+#conteudo-principal a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #d8cb18 ;
+}
+
+#conteudo-principal p{
+    display: block;
+    margin: 1.5% 2.5%;
+    
+}
+
+span{
+    font-weight: bold;
+    color: #d8cb18 ;
+}
+
+#conteudo-projetos{
+    height: 250px;
+    margin: 1.5% 2.5%; 
+    
+    
+}
+
+#conteudo-projetos img{
+    width: 35%;
+    height: 200px;
+    margin: 2.5%;
+    margin-right: 0;
+
+}
+
+#conteudo-projetos div{
+    display: flexbox;
+    float: right;
+    width: 60% ;
+    margin: 2.5% 0;
+    margin-right: 1.5%;
+    
+}
+
+#conteudo-projetos span{
+    font-size: 22px;
+    font-weight: bold;
+    color: #d8cb18 ;
+}
