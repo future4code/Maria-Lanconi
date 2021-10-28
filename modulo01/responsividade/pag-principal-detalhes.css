@@ -1,0 +1,131 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 70px 1fr 45px;
+    grid-template-columns: 1fr;
+}
+
+/*
+Estilização Tela Principal
+*/
+
+#container-header {
+    background-color: #FF4848;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 7.5px 25px;
+    
+}
+
+#container-header p{
+    font-size: 26px;
+    font-weight: bolder;
+    color: #fff;
+}
+
+#container-header span{
+    font-size: 26px;
+    font-weight: bolder;
+    color: #000;
+}
+
+#container-pag-detalhes{
+    margin: 25px;
+}
+
+.video-pag-detalhes {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+.video-pag-detalhes p{
+    font-size: 22px;
+    font-weight: bolder;
+    margin: 0 10px;
+}
+
+.video-pag-detalhes video{
+    width: 65%;
+}
+
+#container-footer {
+    background-color: #FF4848;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 15px 0px;
+    
+}
+
+#container-footer p{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*
+Responsividade
+*/
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    /* tablets */
+
+    #container-header {
+        background-color: #FF4848;
+        display: flex;
+        flex-direction: column;
+        padding: 7px 7.5px 25px;
+        
+    }
+
+    .video-pag-detalhes {
+        justify-content: flex-start;
+    }
+
+    #container-pag-detalhes video {
+        width: 100%;
+        margin-top: 10%;
+    }
+    
+}
+
+ @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* celulares */
+
+    #container-header {
+        background-color: #FF4848;
+        display: flex;
+        flex-direction: column;
+        padding: 7px 7.5px 25px;
+        
+    }
+
+    #container-pag-detalhes {
+        flex-direction: column ;
+        justify-content: flex-start;
+        
+    }
+
+    .video-pag-detalhes {
+        justify-content: flex-start;
+    }
+
+    #container-pag-detalhes video {
+        width: 100%;
+        margin-top: 10%;
+    }
+    
+
+}
