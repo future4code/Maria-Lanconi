@@ -1,18 +1,47 @@
 import react from "react";
 import axios from "axios";
+import styled from "styled-components"
+import CreatePlaylist from "./Components/CreatePlaylist";
+import PlaylistDetails from "./Components/PlaylistDetails";
 
+const DisplayContent = styled.div`
+  height: 100vh;
+  background-color: #FEFBF3;
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #2C061F;
+`
+const DisplayList = styled.div`
+  max-height: 100vh;
+  margin: 20px;
+  padding: 20px;
+  background-color: #B97A95;
+  border-radius: 15px;
+`
 
+const ListContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+
+  img {
+    width: 20px;
+    cursor: pointer;
+  }
+`
 export default class App extends react.Component {
 
   state = {
-    playlistNameInput: '',
-    musicNameInput: '',
-    artistNameInput: '',
-    urlMusicInput: '',
-    playlistId: '',
     playlistList: [],
-    playlistTracksList: []
+    playlistNameInput: '',
+    playlistTracksList: [],
+    changePage: 1
   }
+
+  // Função geral
 
   componentDidMount() {
     this.getPlaylist()
@@ -22,18 +51,8 @@ export default class App extends react.Component {
     this.setState({ playlistNameInput: e.target.value })
   }
 
-  handleMusicNameInput = (e) => {
-    this.setState({ musicNameInput: e.target.value })
-  }
 
-  handleArtistNameInput = (e) => {
-    this.setState({ artistNameInput: e.target.value })
-  }
-
-  handleUrlMusicInput = (e) => {
-    this.setState({ urlMusicInput: e.target.value })
-  }
-
+  // Função API
   createPlaylist = () => {
     const body = {
       name: this.state.playlistNameInput
@@ -52,7 +71,6 @@ export default class App extends react.Component {
         alert('Não foi possível criar sua playlist :( ')
       })
   }
-
   getPlaylist = () => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists', {
       headers: {
@@ -91,47 +109,42 @@ export default class App extends react.Component {
       }
     })
       .then((res) => {
-        this.setState({ playlistTracksList: res.data.result.tracks, playlistCreated: id })
+        this.setState({ playlistTracksList: res.data.result.tracks })
       })
       .catch((error) => {
         console.log(error.response.data)
       })
   }
 
+
   render() {
 
-    const playlistTracks = this.state.playlistTracksList.map((item) => {
-      return <div key={item.id}>
-        {item.name}
-      </div>
-    })
-
     const playlistCreated = this.state.playlistList.map((item) => {
-      return <div key={item.id}>
+      return <ListContent key={item.id}>
 
-        {item.name}
+        <a onClick={() => this.getPlaylistTracks(item.id)}>{item.name}</a>
+        <img onClick={() => this.deletePlaylist(item.id)} src="https://cdn-icons.flaticon.com/png/512/3138/premium/3138336.png?token=exp=1637550523~hmac=4f6e53aa04babd002eb877c14b366030"/>
 
-        <button onClick={() => this.deletePlaylist(item.id)}>Excluir</button>
-        <button onClick={() => this.getPlaylistTracks(item.id)}>+</button>
-
-        {playlistTracks}
-
-      </div>
+      </ListContent>
     })
+    console.log(this.state.getPlaylistTracks)
 
     return (
-      <div>
-        <p>Adicione um nome para sua playlist</p>
 
-        <input
-          placeholder='Nome playlist'
-          value={this.state.playlistNameInput}
-          onChange={this.handlePlaylistNameInput}
+      <DisplayContent>
+
+        <DisplayList>
+          <h2>Suas playlists:</h2>
+          {playlistCreated}
+        </DisplayList>
+
+        <CreatePlaylist
+          playlistNameInput={this.state.playlistNameInput}
+          handlePlaylistNameInput={this.handlePlaylistNameInput}
+          createPlaylist={this.createPlaylist}
         />
-        <button onClick={this.createPlaylist}>Criar Playlist</button>
 
-        {this.state.playlistList.length > 0 ? playlistCreated : 'Crie sua primeira playlist :D'}
-      </div>
+      </DisplayContent>
     )
   }
 }
