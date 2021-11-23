@@ -1,7 +1,41 @@
 import react from "react";
 import axios from "axios";
 import PlaylistTracksCard from "./PlaylistTracksCard";
+import styled from "styled-components";
 
+const DisplayTracks = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  button {
+            border-radius: 10px;
+            background-color: #fff;
+            color: #DA0037;
+            border: solid #DA0037 2px;
+      }
+`
+
+const DisplayInput = styled.div `
+
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+
+
+    input {
+        border-radius: 10px;
+    }
+
+    button {
+        border-radius: 10px;
+        background-color: #fff;
+        color: #DA0037;
+        border: solid #DA0037 2px;
+    }
+  
+`
 export default class playlistTracks extends react.Component {
 
     state = {
@@ -98,32 +132,35 @@ export default class playlistTracks extends react.Component {
         })
 
         return (
-            <div>
+            <DisplayTracks>
+                <DisplayInput>
+                    <input
+                        placeholder='Nome Música'
+                        value={this.state.nameMusicInput}
+                        onChange={this.handleNameMusicInput}
+                    />
 
-                <input
-                    placeholder='Nome Música'
-                    value={this.state.nameMusicInput}
-                    onChange={this.handleNameMusicInput}
-                />
+                    <input
+                        placeholder='Artista'
+                        value={this.state.nameArtistInput}
+                        onChange={this.handleNameArtistInput}
+                    />
 
-                <input
-                    placeholder='Artista'
-                    value={this.state.nameArtistInput}
-                    onChange={this.handleNameArtistInput}
-                />
+                    <input
+                        placeholder='Url'
+                        value={this.state.urlInput}
+                        onChange={this.handleUrlInput}
+                    />
 
-                <input
-                    placeholder='Url'
-                    value={this.state.urlInput}
-                    onChange={this.handleUrlInput}
-                />
-
-                <button onClick={this.addTrackPlaylist}>Adicionar</button>
-                <button onClick={() => this.props.changePage('playlists', '')}>Voltar</button>
+                    <button onClick={this.addTrackPlaylist}>Adicionar</button>
+                </DisplayInput>
 
                 {trackList}
+                                    
+                <button onClick={() => this.props.changePage('playlists', '')}>Voltar</button>
+               
 
-            </div >
+            </DisplayTracks >
         )
     }
 }

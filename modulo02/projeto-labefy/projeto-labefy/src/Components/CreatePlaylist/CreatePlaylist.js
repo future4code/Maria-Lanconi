@@ -4,12 +4,43 @@ import styled from "styled-components";
 
 
 const DisplayCreatePlaylist = styled.div`
-    width: 100vw;;
+    background-color: #171717;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-family: sans-serif;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: sans-serif;
-    `
+    padding: 20px;
+    margin: 10%;
+
+    h1 {
+         
+        text-align: center;
+
+        span{
+            color: #DA0037;
+        }
+    }
+
+    div {
+
+        margin: 10px;
+        
+        input {
+            border-radius: 10px;
+        }
+
+        button {
+            border-radius: 10px;
+            background-color: #fff;
+            color: #DA0037;
+            border: solid #DA0037 2px;
+        }
+    }
+`
 
 export default class CreatePlaylist extends react.Component {
     state = {
@@ -43,17 +74,21 @@ export default class CreatePlaylist extends react.Component {
 
     render() {
         return (
+
             <DisplayCreatePlaylist>
-                <h1>Seja bem-vinde ao Labefy</h1>
+                <h1>Seja bem-vinde ao Lab<span>efy</span></h1>
                 <h2>Crie sua playlist:</h2>
 
-                <input
-                    placeholder='Nome playlist'
-                    value={this.state.nameInputValue}
-                    onChange={this.handleNameInput}
-                />
+                <div>
+                    <input
+                        placeholder='Nome playlist'
+                        value={this.state.nameInputValue}
+                        onChange={this.handleNameInput}
+                    />
 
-                <button onClick={this.createPlaylist}>Adicionar</button>
+                    <button onClick={this.createPlaylist}>Adicionar</button>
+                </div>
+
             </DisplayCreatePlaylist>
         )
     }
