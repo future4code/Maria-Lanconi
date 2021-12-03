@@ -1,23 +1,26 @@
-import react, {useState} from "react";
-import {useEffect} from "react";
-
 import HomePage from "./Components/HomePage/HomePage";
 import MatchesPage from "./Components/MatchesPage/MatchesPage";
+import react, {useState} from "react";
+import * as Styled from "./Components/StyledComponents/StyledComponents"
 
 
 
 
 const App = () => {
-
-  // ----States----
-  const [currentPage, setCurrentPage] = useState('homepage')
+  
+  // ----States / Functions----
+  const [currentPage, setCurrentPage] = useState('matchespage')
 
   const changePage = () => {
     if (currentPage === 'homepage') {
-      return <HomePage/>
+       return <HomePage
+       changePage = {changeToMatchPage}
+       />
     } else if (currentPage === 'matchespage') {
-      return <MatchesPage/>
-    }
+      return <MatchesPage
+      changePage = {changeToHomePage}
+      />
+   }
   }
 
   const changeToMatchPage = () => {
@@ -28,16 +31,15 @@ const App = () => {
     setCurrentPage('homepage')
   }
 
-  
-
   return (
-    <div>
+
+    <Styled.AppDisplay>
+
+      <Styled.GlobalStyle/>
+      
       {changePage()}
 
-      <button onClick={changeToMatchPage}>MatchPage</button>
-      <button onClick={changeToHomePage}>HomePage</button>
-      
-    </div>
+    </Styled.AppDisplay>
   );
 }
 
