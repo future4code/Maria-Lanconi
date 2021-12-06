@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
@@ -76,7 +76,7 @@ export const ImgConfig = styled.div `
     width: 100%;
     height: 100%;
     border-radius: 10px;
-
+   
     img {
         height: 100%;
         width: 100%;
@@ -106,7 +106,7 @@ export const ButtonConfig = styled.div `
     width: 90%;
     height: 50px;
     margin: 15px;
-    
+
     img {
         width: 80px;
     }

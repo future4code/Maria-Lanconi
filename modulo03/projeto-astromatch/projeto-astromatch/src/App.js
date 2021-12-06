@@ -4,12 +4,10 @@ import react, {useState} from "react";
 import * as Styled from "./Components/StyledComponents/StyledComponents"
 
 
-
-
 const App = () => {
   
   // ----States / Functions----
-  const [currentPage, setCurrentPage] = useState('matchespage')
+  const [currentPage, setCurrentPage] = useState('homepage')
 
   const changePage = () => {
     if (currentPage === 'homepage') {

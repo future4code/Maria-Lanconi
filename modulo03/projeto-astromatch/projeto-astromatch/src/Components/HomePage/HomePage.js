@@ -4,9 +4,10 @@ import {useEffect} from "react";
 import {axiosConfig} from "../../APIConst/APIConst";
 import {baseurl} from "../../APIConst/APIConst";
 import * as Styled from "../StyledComponents/StyledComponents"
-import buttonDelete from "../../Img/botao-excluir.png"
-import buttonCheck from "../../Img/verificado.png"
 import profile from "../../Img/profile.png"
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import NotInterestedIcon from '@mui/icons-material/NotInterested';
+import GroupIcon from '@mui/icons-material/Group';
 
 const HomePage = (props) => {
 
@@ -79,7 +80,10 @@ const HomePage = (props) => {
 
             <Styled.GeneralHeader >
                 <p>Astro<span>Match</span></p>
-                <img src={profile} onClick={props.changePage}></img>
+                <GroupIcon sx={{
+                    fontSize: 40,
+                    color: '#700B97',
+                }} onClick={props.changePage}/>
             </Styled.GeneralHeader >
 
             <Styled.ProfileContent>
@@ -95,9 +99,20 @@ const HomePage = (props) => {
 
             </Styled.ProfileContent>
             
-            <Styled.ButtonConfig>
-            <img src={buttonCheck} onClick={() => {likePerson(profiles.id)}}></img>
-                <img src={buttonDelete} onClick={() => {dislikePerson(profiles.id)}}></img>
+            <Styled.ButtonConfig> 
+                <div>               
+                    <NotInterestedIcon sx={{
+                        fontSize: 80,
+                        color: '#700B97',
+                    }} onClick={() => {dislikePerson(profiles.id)}}/>
+                </div>
+
+                <div>
+                    <FavoriteBorderIcon sx={{
+                        fontSize: 80,
+                        color: '#700B97',
+                    }} onClick={() => {likePerson(profiles.id)}}/>
+                </div>
             </Styled.ButtonConfig>
 
             

@@ -5,6 +5,7 @@ import {axiosConfig} from "../../APIConst/APIConst";
 import {baseurl} from "../../APIConst/APIConst";
 import * as Styled from "../StyledComponents/StyledComponents"
 import matches from "../../Img/group.png"
+import PersonIcon from '@mui/icons-material/Person';
 
 const MatchesPage = (props) => {
 
@@ -44,7 +45,10 @@ const MatchesPage = (props) => {
         <Styled.GeneralDisplay>
 
             <Styled.GeneralHeader >
-                <img src={matches} onClick={props.changePage}></img>
+                <PersonIcon sx={{
+                    fontSize: 40,
+                    color: '#700B97',
+                }} onClick={props.changePage}/>
                 <p>Astro<span>Match</span></p>
             </Styled.GeneralHeader >
 
