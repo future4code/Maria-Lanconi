@@ -1,4 +1,3 @@
-import react, { useState, useEffect} from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AdminHomePage from './Components/AdminHomePage/AdminHomePage';
 import ApplicationFormPage from './Components/ApplicationFormPage/ApplicationFormPage';
