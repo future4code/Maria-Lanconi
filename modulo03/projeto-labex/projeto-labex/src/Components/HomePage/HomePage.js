@@ -1,25 +1,21 @@
 import react from 'react';
-import {useHistory} from 'react-router-dom';
+import * as Styled from '../../StyledComponents/StyledComponents';
+import Header from "../Header/Header";
 
 function HomePage() {
   
-  const history = useHistory();
-
-  const goToTripPage = () => {
-    history.push('/trips/list')
-  }
-
-  const goToAdminHomePage = () => {
-    history.push('/admin/trips/list')
-  }
-
   return (
-    <div >
-      <h1>HomePage</h1>
+    <Styled.BaseDisplay>
 
-      <button onClick={goToTripPage}>Trip Page</button>
-      <button onClick={goToAdminHomePage}>Admin Page</button>
-    </div>
+      <Header/>
+      <Styled.HomeDisplay>
+
+        <div></div>
+
+        <img src='https://image.freepik.com/free-vector/window-seat-concept-illustration_114360-5952.jpg'></img>
+      
+      </Styled.HomeDisplay>
+    </Styled.BaseDisplay>
   );
 }
 

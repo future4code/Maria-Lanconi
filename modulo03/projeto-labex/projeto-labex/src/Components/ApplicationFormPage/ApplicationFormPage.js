@@ -1,13 +1,17 @@
 import react from 'react';
 import {useHistory} from 'react-router-dom';
+import tripsList from  '../ApplicationFormPage/ApplicationFormPage'
 
 function ApplicationFormPage() {
 
-  const history = useHistory();
+  //----Function ChangePage----
+  const history = useHistory()
 
   const goBackPage = () => {
     history.goBack()
   };
+  
+  //----Function Api----
 
   return (
     <div>
