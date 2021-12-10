@@ -10,7 +10,7 @@ function Header() {
     }
 
     const goToAdminHomePage = () => {
-        history.push('/admin/trips/list')
+        history.push('/login')
     }
 
     return (

@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { baseUrl } from "./APIFunctions";
 import axios from "axios";
 
@@ -18,3 +18,26 @@ export const TripList = () => {
     return trips
 }
 
+export const Application = (form, id) => {
+    
+    useEffect (() => {
+        axios.post(`${baseUrl}/${id}/apply`, form)
+    })
+    .then (res => {
+        console.log(res.response.data)
+    })
+    .catch (error => {
+        console.log(error.response)
+    })
+    
+}
+
+export const Login = (form) => {
+    axios.post(`${baseUrl}/login`, form)
+    .then( res => {
+        console.log(res.response.data)
+    })
+    .catch ( error => {
+        console.log( error.response)
+    })
+}

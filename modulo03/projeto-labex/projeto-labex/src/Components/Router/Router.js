@@ -5,6 +5,7 @@ import CreateTripPage from '../CreateTripPage/CreateTripPage';
 import HomePage from '../HomePage/HomePage';
 import ListTripPage from '../ListTripsPage/ListTripsPage';
 import TripDetailPage from '../TripDetailsPage/TripDetailsPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 function Router() {
     return (
@@ -13,6 +14,10 @@ function Router() {
         <Switch>
           <Route exact path = '/'>
             <HomePage/>
+          </Route>
+          
+          <Route exact path = '/login'>
+            <LoginPage/>
           </Route>
   
           <Route exact path = '/trips/list'>
@@ -34,7 +39,8 @@ function Router() {
           <Route exact path = '/admin/trips/:id'>
             <TripDetailPage/>
           </Route>
-  
+
+            
         </Switch>
   
       </BrowserRouter>

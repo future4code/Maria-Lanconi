@@ -34,6 +34,37 @@ export const ContentDisplay = styled.div `
   align-items: center;
 `
 
+//----Base Form Display----
+
+export const FormDisplay = styled.form `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  
+
+  h1 {
+    color: #353D40
+  }
+
+  input {
+    padding: 5px;
+    margin: 10px;
+    height: 45px;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 16px
+  }
+
+  select {
+    padding: 5px;
+    margin: 10px;
+    height: 50px;
+    width: 82%;
+    border-radius: 10px;
+    font-size: 16px
+  }
+`
 
 //----Header Page----
 
@@ -99,7 +130,7 @@ export const TripPageDisplay = styled.div `
 `
 
 export const ButtonDisplay = styled.div `
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -109,7 +140,7 @@ export const ButtonDisplay = styled.div `
   button {
       background-color: #6593A6;
       border: 3px solid #6593A6;
-      width: 45%;
+      width: 40%;
       height: 40px;
       border-radius: 5px;
       color: #ffffff;
@@ -117,7 +148,6 @@ export const ButtonDisplay = styled.div `
       font-size: 18px;
   }
 `
-
 
   //----Card Trip----
   export const CardDisplay = styled.div `
@@ -142,3 +172,6 @@ export const ButtonDisplay = styled.div `
       }
     }
   `
+  
+  //----Application Page----
+  

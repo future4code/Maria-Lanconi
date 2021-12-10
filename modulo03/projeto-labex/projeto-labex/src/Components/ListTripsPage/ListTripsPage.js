@@ -47,7 +47,7 @@ function ListTripPage() {
             {list()}
 
           <Styled.ButtonDisplay>
-            <button onClick={goBackPage}>Back</button>
+            <button onClick={goBackPage}>Voltar</button>
             <button onClick={goToApplicationForm}>Inscreva-se</button>
           </Styled.ButtonDisplay>
 
