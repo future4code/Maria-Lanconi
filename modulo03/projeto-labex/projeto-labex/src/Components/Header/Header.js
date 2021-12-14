@@ -10,14 +10,18 @@ function Header() {
     }
 
     const goToAdminHomePage = () => {
-        history.push('/login')
+        history.push('/admin/trips/list')
+    }
+    
+    const goToHomePage = () => {
+        history.push('/')
     }
 
     return (
 
         <Styled.HeaderDisplay>
             
-            <h1>Labe<span>X</span></h1>
+            <h1 onClick={goToHomePage}>Labe<span>X</span></h1>
             
             <div>
                 <button onClick={goToTripPage}>Viagens</button>  

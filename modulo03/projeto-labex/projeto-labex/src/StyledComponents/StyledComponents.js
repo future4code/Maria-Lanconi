@@ -6,7 +6,7 @@ import { createGlobalStyle } from "styled-components";
 //#6593A6 (button)
 //#353D40 (tittle)
 //#9D9A91 (tittle 'Labe')
-//##223E47 (tittle 'X')
+//#223E47 (tittle 'X')
 
 //----Global----
 
@@ -40,8 +40,7 @@ export const FormDisplay = styled.form `
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  
+  width: 750px;
 
   h1 {
     color: #353D40
@@ -78,9 +77,11 @@ export const HeaderDisplay = styled.div `
   margin: 60px;
   color: #9D9A91;
   font-size: 34px;
-  
+  cursor: pointer;
+}
   span {
     color: #223E47;
+    cursor: pointer;
   }
  } 
 
@@ -101,6 +102,7 @@ export const HeaderDisplay = styled.div `
     color: #ffffff;
     font-weight: bold;
     font-size: 18px;
+    cursor: pointer;
   }
  }
 `
@@ -112,6 +114,25 @@ export const HomeDisplay = styled.div `
   display: flex;
   justify-content: space-between;
 
+  div {
+    height: 300px;
+    width: 40%;
+    text-align: center;
+    margin-left: 100px;
+    margin-top: 20vh;
+    
+    h1 {
+    color: #223E47;
+    }
+
+    p {
+    width: 100%;
+    color: #A1A5A6;
+    }
+  }
+  
+
+  
   img{
    margin-right: 3%;
    width: 650px;
@@ -130,26 +151,27 @@ export const TripPageDisplay = styled.div `
 `
 
 export const ButtonDisplay = styled.div `
-  width: 40%;
+  width: 350px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  margin-top: 60px;
+  margin-top: 2.5%;
   
   button {
       background-color: #6593A6;
       border: 3px solid #6593A6;
-      width: 40%;
+      min-width: 40%;
       height: 40px;
       border-radius: 5px;
       color: #ffffff;
       font-weight: bold;
       font-size: 18px;
+      cursor: pointer;
   }
 `
 
-  //----Card Trip----
+  //----Cards Trip/Detail----
   export const CardDisplay = styled.div `
     display: flex;
     flex-direction: column;
@@ -164,14 +186,81 @@ export const ButtonDisplay = styled.div `
 
     div{
       text-align: justify;
-      width: 75%;
+      width: 500px;
+      min-width: 400px
 
       span {
         color: #9D9A91;
         font-weight: bold;
       }
     }
+    
+    button {
+      background-color: #6593A6;
+      border: 3px solid #6593A6;
+      width: 125px;
+      height: 25px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 0px 10px;
+    
+    }
   `
+  export const DisplayButton2 = styled.div `
+    display: flex;
+    flex-direction: row;
+    align-item: center;
+    justify-content: center;
+    max-width: 100%;
+  `
+
   
-  //----Application Page----
+  //----Admin Page----
+
+  export const AdminPageDisplay = styled.div `
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  `
+  export const AdminMenu = styled.div `
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    height: 80%;
+    width: 200px;
+    margin-left: 60px;
+    padding: 5px;
   
+
+    p {
+      color: #353D40;
+      font-weight: bold;
+      margin: 5px;
+      margin-left: 0px;
+      cursor: pointer;
+    }
+    
+  `
+    export const DetailDisplay = styled.div `
+      margin-left: 50px ;
+      width: 75%;
+    `
+    //----Trip Details----
+
+    export const TripDetailDisplay = styled.div `
+      display: flex;
+      flex-direction: row;
+      margin: 0px 10%;
+      justify-content: space-around;
+    `
+    //----Create Trip----
+
+    export const CreateTripDisplay = styled.div `
+      display: flex;
+      width: 75%;
+      justify-content: center;
+
+    `

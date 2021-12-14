@@ -1,11 +1,9 @@
-import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import useForm from '../../UseForm/UseForm';
 import Header from '../Header/Header';
 import * as Styled from '../../StyledComponents/StyledComponents';
 import { Login } from '../../API/Functions';
-import { baseUrl} from '../../API/APIFunctions'
-import axios from 'axios';
+
 
 function LoginPage () {
 
@@ -15,16 +13,25 @@ function LoginPage () {
     const goBackPage = () => {
         history.goBack()
     };
+
       
     //----Function General----
 
-    const { form, onChange, cleanFields } = useForm({ email: '', password: ''});
+    const { form, onChange, cleanFields } = useForm({email: '', password: ''});
+
+    const loginAdmin = (e) => {
+        Login(form, history)
+        e.preventDefault()
+        cleanFields()
+    }
+
+    
 
         return (
         <Styled.BaseDisplay> 
             <Header/>
             <Styled.ContentDisplay>
-                <Styled.FormDisplay onSubmit={Login}>
+                <Styled.FormDisplay onSubmit={loginAdmin}>
                     <h1>Faça seu login</h1>
                     <input
                         name="email"

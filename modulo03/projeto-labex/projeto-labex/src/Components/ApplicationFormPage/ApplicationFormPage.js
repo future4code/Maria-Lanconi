@@ -21,17 +21,26 @@ function ApplicationFormPage() {
   const [id, setId] = useState('')
   const { form, onChange, cleanFields } = useForm({ name: '', age: '', applicationText: '', profession: '', country: ''});
   
+  const IdValue = (id) => {
+    setId(id)
+  }
   const trips = TripList()
-      
+
+  const ApplicationForm = (e) => {
+    Application(form, id)
+    e.preventDefault()
+    cleanFields()
+  }
+
   return (
     <Styled.BaseDisplay>
       <Header/>    
       <Styled.ContentDisplay>
-        <Styled.FormDisplay onSubmit={() => {Application(form, id)}}>
+        <Styled.FormDisplay onSubmit={ApplicationForm}>
           <select name="trips">
             <option value="" selected>Escolha uma Viagem</option>
             {trips.map((trip) => {
-              return <option key={trip.id} value={trip.id}>{trip.name}</option>
+              return <option onClick={() => {IdValue(trip.id)}} key={trip.id} value={trip.id}>{trip.name}</option>
             })} 
           </select>
           <input

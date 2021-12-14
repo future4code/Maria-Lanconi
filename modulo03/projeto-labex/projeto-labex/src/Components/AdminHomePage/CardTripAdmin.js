@@ -1,6 +1,6 @@
 import * as Styled from '../../StyledComponents/StyledComponents'
 
-function CardTrip (props) {
+function CardTripAdmin (props) {
     return (
         <Styled.CardDisplay>
             <h1>{props.name}</h1>
@@ -10,11 +10,12 @@ function CardTrip (props) {
                 <p><span>Duração:</span> {props.duration} dias</p>
                 <p><span>Data:</span> {props.date}</p>
                 <Styled.DisplayButton2>
-                    <button onClick={() => {props.function(props.id)}}>Ver mais</button>
+                    <button onClick={() => {props.details(props.id)}}>Ver mais</button>
+                    <button onClick='{}'>Excluir</button>
                 </Styled.DisplayButton2>
             </div>
         </Styled.CardDisplay>
     )
 }
 
-export default CardTrip;
+export default CardTripAdmin;

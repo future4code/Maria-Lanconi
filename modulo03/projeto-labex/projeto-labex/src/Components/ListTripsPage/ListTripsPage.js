@@ -14,6 +14,10 @@ function ListTripPage() {
     history.goBack()
   };
 
+  const changeTripId = (id) => {
+    history.push(`/admin/trips/${id}`)
+  }
+
   const goToApplicationForm = () => {
     history.push('/trips/application')
   };
@@ -32,6 +36,8 @@ function ListTripPage() {
             planet = {trips.planet}
             duration = {trips.durationInDays}
             date = {trips.date}
+            id = {trips.id}
+            function = {changeTripId}
           />
         })}
         
@@ -41,6 +47,7 @@ function ListTripPage() {
 
   return (
     <Styled.BaseDisplay>
+      
       <Header/>
 
       <Styled.ContentDisplay>
