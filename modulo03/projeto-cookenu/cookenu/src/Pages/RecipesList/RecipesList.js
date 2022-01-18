@@ -34,11 +34,8 @@ function RecipesList() {
       <Styled.GeneralDisplay>
 
         <Header/>
-
-        
-          {feed()}
-        
-        
+      
+          {feed()}        
       </Styled.GeneralDisplay>
     );
   }

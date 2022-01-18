@@ -62,6 +62,7 @@ import { createGlobalStyle } from "styled-components";
         border-radius: 15px;
         color: #fff;
         font-weight: bold;
+        cursor: pointer;
     `
 
     export const LinkFormat = styled.p `
