@@ -1,0 +1,12 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc ./exe05.ts && node ./build/exe05.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
