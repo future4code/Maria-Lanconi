@@ -1,7 +1,9 @@
-import react, { useEffect, useState } from 'react';
 import {useHistory} from 'react-router-dom';
-import {baseUrl} from '../../API/APIFunctions';
-import axios from 'axios';
+import * as Styled from '../../StyledComponents/StyledComponents'
+import Header from '../Header/Header';
+import CardTrip from './CardTrip';
+import {TripList} from '../../API/Functions';
+
 
 function ListTripPage() {
 
@@ -12,39 +14,53 @@ function ListTripPage() {
     history.goBack()
   };
 
+  const changeTripId = (id) => {
+    history.push(`/admin/trips/${id}`)
+  }
+
   const goToApplicationForm = () => {
     history.push('/trips/application')
   };
 
   //----Function API----
   
-  const [trips, setTripsValue] = useState([])
+  const list = () => {
+    const trip = TripList()
 
-  useEffect(() => {
+    return (
+      <Styled.TripPageDisplay>
+        {trip.map(trips => {
+          return <CardTrip
+            name = {trips.name}
+            description ={trips.description}
+            planet = {trips.planet}
+            duration = {trips.durationInDays}
+            date = {trips.date}
+            id = {trips.id}
+            function = {changeTripId}
+          />
+        })}
+        
+      </Styled.TripPageDisplay>
+    )
+  }
 
-     axios.get(`${baseUrl}/trips`)
-      .then (res => {
-       setTripsValue(res.data.trips)
-      })
-      .catch ( error => {
-        console.log(error)
-      })
-  }, [])
-
-  const tripList = trips.map( trip => {
-    return <div>
-      {trip.name}
-    </div>
-  })
- 
-  
   return (
-    <div >
-      <h1>ListTripPage</h1>
-      {tripList}
-      <button onClick={goBackPage}>Back</button>
-      <button onClick={goToApplicationForm}>Inscever-se</button>
-    </div>
+    <Styled.BaseDisplay>
+      
+      <Header/>
+
+      <Styled.ContentDisplay>
+            {list()}
+
+          <Styled.ButtonDisplay>
+            <button onClick={goBackPage}>Voltar</button>
+            <button onClick={goToApplicationForm}>Inscreva-se</button>
+          </Styled.ButtonDisplay>
+
+      </Styled.ContentDisplay>
+      
+    </Styled.BaseDisplay>
   );
 }
 
