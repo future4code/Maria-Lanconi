@@ -22,7 +22,7 @@ app.get('/ping', (req:Request, res:Response) => {
 type extrato = {
     valor:number,
     data:string,
-    descrição:string
+    descricao:string
 }
 
 type user = {
@@ -39,6 +39,13 @@ const listaDeUsuário:user[] = [
         documento: "123.456.678-22",
         nascimento: "27/03/2008",
         saldo: 100,
+        extrato: []
+    },
+    {
+        nome: "Maria",
+        documento: "123.456.678-35",
+        nascimento: "27/03/2008",
+        saldo: 50,
         extrato: []
     }
     
@@ -140,6 +147,99 @@ app.post('/saldo', (req:Request, res:Response) => {
         }
 
         res.status(200).send({nomeUsuario, docUsuario, nome, doc, saldoAtual})
+    } catch(error:any) {
+        res.status(400).send(error.message)
+    }
+})
+
+// Pagar conta OK
+// Post valor, descrição, data pagamento OK
+// if data === '' then data === hoje OK
+// if data < hoje throw error 
+
+
+app.post('/saldo/pagarConta',  (req:Request, res:Response) => {
+    try {
+        const { valor, descricao} = req.body
+        let data = req.body.data
+        const userDoc = req.query.doc
+        let saldoAtual
+        let adicionarExtrato
+        
+        // if(data) {
+        //     const dataAtual = new Date()
+        //     const arraydata = data.splice("/") 
+
+        //     if(arraydata[0] < data.getDate() || arraydata[1] < (dataAtual.getMonth() + 1) || arraydata[2] < dataAtual.getFullYear()) {
+        //         throw new Error('Data inválida, por gentileza, insira uma data atual ou futura.')
+        //     }
+        // }
+
+        if(!data){
+            const dataAtual = new Date()
+            data = `${dataAtual.getDate()}/${0 + (dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
+        }
+
+        listaDeUsuário.forEach( usuario => {
+            
+            if(usuario.documento === userDoc) {
+
+                adicionarExtrato = [...usuario.extrato,{
+                    valor,
+                    data,
+                    descricao
+                }]
+                usuario.extrato = adicionarExtrato
+                    
+                saldoAtual = usuario.saldo - valor
+                usuario.saldo = saldoAtual
+        
+            }
+            
+
+        })
+
+        res.send(listaDeUsuário)
+    } catch(error:any) {
+        res.status(400).send(error.message)
+    }
+})
+
+// Transfêrencia interna
+// Post saldo OK
+// nome && CPF usuario e destinatário OK
+// respeitar saldo do usuario OK
+
+// Lógica para dest não funciona
+
+app.post('/transferencia', (req:Request, res:Response) => {
+    try {
+        const {userName, userDoc, destName, destDoc} = req.query
+        const valor = req.body.valor
+
+        listaDeUsuário.forEach( usuario => {
+            if(usuario.nome === userName && usuario.documento === userDoc) {
+                if(usuario.saldo > valor) {
+                    const valorAtual = usuario.saldo - valor
+                    usuario.saldo = valorAtual
+                } else {
+                    throw new Error('Saldo insuficiente!')
+                }
+            } 
+           
+            listaDeUsuário.forEach( usuario => {
+                if(usuario.nome === destName && usuario.nome === destDoc) {
+                    const valorDest = usuario.saldo + valor
+                    usuario.saldo = valorDest
+                }
+               
+            })
+        })
+
+        
+        
+        res.send(listaDeUsuário)
+
     } catch(error:any) {
         res.status(400).send(error.message)
     }
