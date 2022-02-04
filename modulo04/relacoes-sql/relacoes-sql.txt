@@ -1,0 +1,23 @@
+###Exercicio 01
+a) Foreign key: relaciona colunas que possuem a mesma função em diferentes tabelas.
+b) 
+	``INSERT INTO Rating (id, comment, rate, movie_id)
+VALUES(  "001",   "Ótimo filme, adorei!",  10,  "002"),
+(  "002",   "Esperava mais!",  4.5,  "003");``
+c)	 ``Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails 	 (`carver-maria-fernanda-lanconi`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN 	 KEY (`movie_id`) REFERENCES `Movie` (`id`))``	
+	Não adiciona porque ele não tem como referencias as colunas, considerando que é necessário ter o valor inicial antes de relacionar.
+d)  	`` ALTER TABLE Movie DROP COLUMN avaliacao; ``
+e)	``Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint 	fails (`carver-maria-fernanda-lanconi`.`Rating`, CONSTRAINT `Rating_ibfk_1` 	FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))``
+	Não posso apagar a info pai, primeiro é necessário apagar a tabela que precisa da 	info pai.
+###Exercicio 02
+a) A tabela retorna o id do ator e do filme que ele participou.
+b)
+	`` INSERT INTO MovieCast (movie_id, actor_id)
+	VALUES(  "002",  "006"),(  "003",  "006"),(  "003",  "003"),
+	(  "002",  "002"),(  "002",  "005"),(  "003",  "002");`` 
+c e d) mesma resposta do exercício anterior.
+###Exercicio 03
+a)	ON é a condição que vai ser implantada para que as duas tabelas se relacionem.
+b)	``SELECT  movie_id, titulo, rate FROM Movie 
+	INNER JOIN Rating ON Movie.id = Rating.movie_id;``
+
