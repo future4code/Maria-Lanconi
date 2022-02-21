@@ -1,0 +1,5 @@
+Exe 01 
+
+1-) a-) É importante que retorne uma string para que não haja problemas com números hexadecimais.
+2-) a-) A const connection faz conexão com o banco de dados, a function createUser recebe alguns dados por parametros e adiciona os mesmo em uma tabela chamada userTableName.
+3-) a-) Faz com que considere o valor como o solicitado, precisamos para que não haja conflito.
