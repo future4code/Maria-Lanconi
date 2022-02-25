@@ -1,28 +1,35 @@
-import * as jwt from 'jsonwebtoken';
 import { Request, Response } from "express";
 import { connection } from "../connection/connection";
 import { User } from "../data/user";
 import { hash } from '../services/generateHash';
-import dotenv from "dotenv";
+import { generateToken } from "../services/generateToken";
 
-dotenv.config();
 
 export const signUpUser = async (req:Request, res:Response):Promise<void> => {
     try {
         const {name, email, password} = req.body
         
-        //pré requisito registro
+        //handle empty input
         if(!name || !email || !password) {
             throw new Error('Por favor, preencha todos os campos.')
         }
 
+        //handle min character limit
         if(password.length < 6){
             throw new Error('A senha precisa ter pelo menos seis caracteres.')
         }
 
-        //criando user | inserindo DB 
+        //verify user exist
+        const [user] = await connection("cookenuUsers").where({email})
+
+        if(user){
+            throw new Error('Usuário já criado!')
+        }
+
+        //create User
         const newUser = new User({name, email, password})
 
+        //insert on db
         const insertNewUser = await connection('cookenuUsers')
         .insert({
             id: newUser.getId(),
@@ -31,12 +38,8 @@ export const signUpUser = async (req:Request, res:Response):Promise<void> => {
             password: await hash(newUser.getPassword())
         })
 
-        //token acesso
-        const token = jwt.sign(
-            { id: newUser.getId() },
-            String(process.env.KEY),
-            { expiresIn: "24h" }
-        )
+        //token 
+        const token = await generateToken(newUser.getId())
            
         //body output
         res.send({"access_token": token})

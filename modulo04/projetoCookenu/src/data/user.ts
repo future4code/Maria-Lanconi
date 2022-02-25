@@ -1,5 +1,3 @@
-import { hashSync } from "bcryptjs";
-import { hash } from "../services/generateHash";
 import { generateID } from "../services/generateID";
 
 
