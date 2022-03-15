@@ -3,9 +3,10 @@ export enum POST_TYPES {
     EVENT = "event"
 }
  
-export default class post{
+export default class Post{
     
-    constructor(id: string,
+    constructor(
+    id: string,
     photo: string,
     description: string,
     type: POST_TYPES,
