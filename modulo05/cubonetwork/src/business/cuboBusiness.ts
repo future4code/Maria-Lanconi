@@ -1,11 +1,13 @@
 import { CuboDatabase } from "../data/cuboDatabase";
 import { participationInput, participationInputDTO } from "../model/participationInput";
 import { IDGenerator } from "../services/generateId";
+import { ValidateInput } from "../services/validateInput";
 
 export class CuboBusiness {
     constructor(
         private idGenerator:IDGenerator,
-        private cuboDataBase:CuboDatabase
+        private cuboDataBase:CuboDatabase,
+        private validateInput:ValidateInput
     ){}
 
     public insertNewUserOnTable = async(input:participationInputDTO):Promise<void> => {
@@ -19,7 +21,7 @@ export class CuboBusiness {
         }
 
         //number on string
-        if(first_name.match(/^[0-9]/g) || last_name.match(/^[0-9]/g) ){
+        if(this.validateInput.numberOnInput(first_name) || this.validateInput.numberOnInput(last_name)){
             throw new Error('Number characters not supported')
         }
 

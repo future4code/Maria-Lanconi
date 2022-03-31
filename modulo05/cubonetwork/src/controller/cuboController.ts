@@ -20,7 +20,7 @@ export class CuboController {
 
             await this.cuboBusiness.insertNewUserOnTable(input)
 
-            res.status(201).send('User added successfully')
+            res.status(201).send('User added successfully!')
 
         } catch(e:any) {
             if (e.message){
@@ -36,14 +36,14 @@ export class CuboController {
         
         try{
 
-            const userParticipationList =  this.cuboBusiness.showAllUsersParticipation()
+            const userParticipationList = await this.cuboBusiness.showAllUsersParticipation()
 
             res.status(201).send({userParticipationList})
 
         } catch(e:any) {
 
             if (e.message){
-                return res.status(400).send(e.message)
+                return res.status(400).send(e.sqlMessage || e.mysqlmessage)
             } else {
                 return res.status(400).send('Error getting data')
             }
