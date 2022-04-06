@@ -1,4 +1,4 @@
-export const changeCurrentPage = (navigateFunction) => {
+export const changeCurrentPage = (navigateFunction, ) => {
 
     const changeToHomePage = () => {
         navigateFunction('/')
