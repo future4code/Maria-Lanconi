@@ -5,6 +5,7 @@ import { changeCurrentPage } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 import { apiKey, baseURL } from "../../apiServices/apiBaseInfo";
 import { useState, useEffect } from "react";
+import HeaderComponent from "../../components/header/headerComponent";
 
 function HomePage(){
     const {changeToMovieDetails} = changeCurrentPage(useNavigate())
@@ -33,13 +34,14 @@ function HomePage(){
         if(result[0]){
             return (
                 result.map(movie => {
-                    return  <MovieListComponent
-                            movieTitle = {movie.title}
-                            moviePoster = {movie.poster_path}
-                            releaseDate = {movie.release_date}
-                            changePageFunction= {changePage}
-                            movieID = {movie.id}
-                        />
+                    return <MovieListComponent key={movie.id}
+                    movieTitle = {movie.title}
+                    moviePoster = {movie.poster_path}
+                    releaseDate = {movie.release_date}
+                    changePageFunction= {changePage}
+                    movieID = {movie.id}
+                    />
+
                 })
             )
         }
@@ -48,6 +50,7 @@ function HomePage(){
     
     return(
         <div>
+            <HeaderComponent/>
             <s.MoviesListLayoutConfig>
                 {mapMovieResults()}
             </s.MoviesListLayoutConfig>

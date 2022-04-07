@@ -4,21 +4,20 @@ import { baseURL, apiKey } from "../../apiServices/apiBaseInfo";
 import { changeCurrentPage } from "../../router/coordinator";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
+import HeaderComponent from "../../components/header/headerComponent";
 
 function MovieDetailPage(){
-    const [movieDetail, setMovieDetail] = useState([])
-    const {changeToHomePage} = changeCurrentPage(useNavigate())
+    const [movieDetail, setMovieDetail] = useState({})
     const { id } = useParams()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         const getMovieDetail = () => {
             axios
             .get(`${baseURL}/movie/${id}?api_key=${apiKey}&language=pt-BR`)
             .then(res => {
                 setMovieDetail(res.data)
-                console.log(res.data)
             })
             .catch(e => {
                 console.log('error:', e.response.data.message)
@@ -28,19 +27,22 @@ function MovieDetailPage(){
         getMovieDetail()
     }, [id])
 
-    const changePage = () => {
-        changeToHomePage()
+    const mapMovieDetail = () => {
+        return  <MovieInfoComponent
+            movieTitle = {movieDetail.title}
+            moviePoster = {movieDetail.poster_path}
+            releaseDate = {movieDetail.release_date}
+            runtime = {movieDetail.runtime}
+            sinopse = {movieDetail.overview}
+            moviegenre = {movieDetail.genres}
+        />    
+               
     }
-
-    
     
     return(
         <div>
-            <h1>MoviePage</h1>
-            <MovieInfoComponent/>
-
-            <button onClick={changePage}>BACK</button>
-            
+            <HeaderComponent/>
+            {mapMovieDetail()}
         </div>
     )
 };
