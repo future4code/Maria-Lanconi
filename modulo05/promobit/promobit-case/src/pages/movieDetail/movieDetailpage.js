@@ -35,6 +35,7 @@ function MovieDetailPage(){
             runtime = {movieDetail.runtime}
             sinopse = {movieDetail.overview}
             moviegenre = {movieDetail.genres}
+            rating = {movieDetail.vote_average}
         />    
                
     }

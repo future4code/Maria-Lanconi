@@ -9,7 +9,7 @@ export const MovieDetailContainer = styled.div `
 `
 
 export const MovieInfoContainer = styled.div `
-    padding: 20px 50px ;
+    padding: 15px 50px ;
     height: 287px;
     width: 100%;
     display: flex;
@@ -18,7 +18,7 @@ export const MovieInfoContainer = styled.div `
 export const MovieInfoContainerChildren = styled.div `
     padding: 0px 50px ;
     height: 287px;
-    width: 696px;
+    width: 700px;
     min-width: 500px;
     display: flex;
     flex-flow: column;
@@ -27,7 +27,7 @@ export const MovieInfoContainerChildren = styled.div `
 `
 export const DetailPageMainImg = styled.img `
     width: 383px;
-    height: 574px;
+    height: 540px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 8px;
 `

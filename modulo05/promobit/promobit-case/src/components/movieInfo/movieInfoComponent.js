@@ -1,4 +1,5 @@
-import * as s from './movieInfoStyle'
+import * as s from './movieInfoStyle';
+import Rating from '@mui/material/Rating';
 
 function MovieInfoComponent(props){
     const mapMovieGenre = () => {
@@ -11,6 +12,8 @@ function MovieInfoComponent(props){
         }
         
     }
+
+    const ratingValue = (props.rating * 5)/10
 
     return(
         <s.MovieDetailContainer>
@@ -25,6 +28,8 @@ function MovieInfoComponent(props){
                             {mapMovieGenre()}
                             {props.runtime}Min
                         </s.MovieInfos>
+                        
+                        <Rating name="read-only" value={ratingValue} readOnly />
 
                         <s.SecondaryTitle>Sinopse</s.SecondaryTitle>
                         <s.MovieInfos>{props.sinopse}</s.MovieInfos>

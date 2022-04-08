@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { apiKey, baseURL } from "../../apiServices/apiBaseInfo";
 import { useState, useEffect } from "react";
 import HeaderComponent from "../../components/header/headerComponent";
+import SecondHeaderComponent from "../../components/homeSecondHeader/secondHeaderComponente";
 
 function HomePage(){
     const {changeToMovieDetails} = changeCurrentPage(useNavigate())
@@ -51,9 +52,13 @@ function HomePage(){
     return(
         <div>
             <HeaderComponent/>
+
+            <SecondHeaderComponent/>
+            
             <s.MoviesListLayoutConfig>
                 {mapMovieResults()}
             </s.MoviesListLayoutConfig>
+            
             
         </div>
         
