@@ -11,24 +11,24 @@ import SecondHeaderComponent from "../../components/homeSecondHeader/secondHeade
 function HomePage(){
     const {changeToMovieDetails} = changeCurrentPage(useNavigate())
     const [result, setResult] = useState([])
-
+    
     useEffect(() => {
+        const getPopularMovies = () => {
+            axios
+            .get(`${baseURL}/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`)
+            .then(res => {
+                setResult(res.data.results)
+               
+            })
+            .catch(e => {
+                console.log('error:', e.response.data.message)
+            })
+        }
         getPopularMovies()
-    }, [])
-
+    }, )
+    
     const changePage = (movieID) => {
         changeToMovieDetails(movieID)
-    }
-
-    const getPopularMovies = () => {
-        axios
-        .get(`${baseURL}/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`)
-        .then(res => {
-            setResult(res.data.results)
-        })
-        .catch(e => {
-            console.log('error:', e.response.data.message)
-        })
     }
 
     const mapMovieResults = () => {
@@ -48,19 +48,17 @@ function HomePage(){
         }
     }
 
-    
     return(
-        <div>
+        <>
             <HeaderComponent/>
 
             <SecondHeaderComponent/>
-            
+
             <s.MoviesListLayoutConfig>
                 {mapMovieResults()}
             </s.MoviesListLayoutConfig>
-            
-            
-        </div>
+
+        </>
         
     )
 };

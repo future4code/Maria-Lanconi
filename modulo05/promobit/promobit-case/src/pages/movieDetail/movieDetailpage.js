@@ -41,10 +41,10 @@ function MovieDetailPage(){
     }
     
     return(
-        <div>
+        <>
             <HeaderComponent/>
             {mapMovieDetail()}
-        </div>
+        </>
     )
 };
 
